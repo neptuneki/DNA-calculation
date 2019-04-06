@@ -10,8 +10,6 @@
 #define CHUNK 1
 #define THREAD_NUM 64
 
-//g++ calculate_writhe_number_using_bdb_for_1NT_2015_Sutthbutpong_JCTC.cpp -fopenmp
-
 class Coordinate
 {
     public:
@@ -89,7 +87,6 @@ int main (int argc, char *argv[])
     	int i, j;
     	Coordinate s1, s2, V, C;
 
-    	//omp_set_num_threads(THREAD_NUM);
     	#pragma omp parallel private(j, s1, s2, V, C, W1, size, W2, ptotal) reduction(+:total) 
     	{
 		#pragma omp for schedule(dynamic, CHUNK)
@@ -129,12 +126,6 @@ int main (int argc, char *argv[])
 	<< total <<  "\n";
         Fout.close();
         return 0;
-}
-
-void PrintUsage()
-{
-        std::cout << "\nUsage: XXX.exe <input_file> <output_file>\n\n";
-
 }
 
 Coordinate Cross (const Coordinate& coor1, const Coordinate& coor2)
