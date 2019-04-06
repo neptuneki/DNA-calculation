@@ -2,8 +2,6 @@
 #include <fstream>
 #include <vector>
 #include <string>
-#include <cstdlib>
-#include <iomanip>
 #include <cmath>
 #include <omp.h>
 
