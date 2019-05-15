@@ -73,9 +73,6 @@ int main (int argc, char *argv[])
                 return EXIT_FAILURE;
         }
 
-	std::ifstream Fin(inputFile);
-	if(!Fin) std::cerr<<"Cannot open input file " << inputFile << std::endl;
-
 	std::vector<Coordinate> PDB1;
 	std::vector<Coordinate> PDB2;
 	Coordinate xyz;
