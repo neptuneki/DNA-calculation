@@ -87,30 +87,6 @@ int main (int argc, char *argv[])
     	int i, j;
     	Coordinate s1, s2, V, C;
 
-    	#pragma omp parallel private(j, s1, s2, V, C, W1, size, W2, ptotal) reduction(+:total) 
-    	{
-		#pragma omp for schedule(dynamic, CHUNK)
-        	for(i=0; i<atoms.size()-1; i++) {
-			for(j=i+1; j<atoms.size()-1; j++) {
-
-				s1 = atoms[i+1] - atoms[i];		
-				s2 = atoms[j+1] - atoms[j];		
-
-				V = atoms[i] -  atoms[j];
-				C = Cross(s1, s2);
-
-				W1 = C * V;
-				size = Size(V);
-				W2 = W1 / (size * size * size);
-				ptotal += W2;
-			}
-			if(i % 10000 == 0) {
-				std::cout << inputFile << " finish:" << i << std::endl;
-			}
-        	}
-		total += ptotal;
-    	}
-
 	total = total / (2 * M_PI); 
 
 	std::ofstream Fout(outputFile);
